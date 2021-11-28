@@ -501,6 +501,10 @@ async function isItemInStock(
     const maxPrice = config.store.maxPrice.series[link.series];
 
     link.price = await getPrice(page, store.labels.maxPrice, baseOptions);
+    if (!link.price) {
+      logger.info("Couldn't get " + link.brand + link.model + " price: " + link.price);
+      return false;  
+    }
 
     if (link.price && link.price > maxPrice && maxPrice > 0) {
       logger.info(Print.maxPrice(link, store, maxPrice, true));

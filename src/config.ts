@@ -139,11 +139,7 @@ function envOrNumberMax(
 ) {
   if (environmentMin || environmentMax) {
     if (environmentMin && environmentMax) {
-      return Number(
-        Number(environmentMin) < Number(environmentMax)
-          ? environmentMax
-          : environmentMax
-      );
+      return Number(environmentMax);
     }
 
     if (environmentMin) {
